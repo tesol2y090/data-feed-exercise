@@ -23,10 +23,9 @@ contract BitcoinATM {
      * @param _usdc - UDSC Token Address
      * @param _wbtc - WBTC Token Address
      */
-    constructor(address _priceFeed, address _usdc, address _wbtc) {
-        priceFeed = AggregatorV3Interface(_priceFeed);
-        usdc = IERC20(_usdc);
-        wbtc = IERC20(_wbtc);
+    // TODO: 1.Create constructor that receive 3 argument.
+    constructor() {
+        /// code here
     }
 
 
@@ -35,15 +34,9 @@ contract BitcoinATM {
      *
      * @param _amount - Amount of bitcoin to buy
      */
+    // TODO: 2.Create buy bitcoin function that take amount of bitcoin to buy.
 	function buyBitcoin(uint256 _amount) external {
-        int256 price = getLatestPrice();
-        uint256 decimals = priceFeed.decimals();
-
-        uint256 usdcAmount = uint256(price) * _amount / (10 ** decimals);
-
-        usdc.transferFrom(msg.sender, address(this), usdcAmount);
-
-        wbtc.transfer(msg.sender, _amount);
+        /// code here
 	}
 
     /**
@@ -51,15 +44,9 @@ contract BitcoinATM {
      *
      * @param _amount - Amount of bitcoin to buy
      */
+    // TODO: 3.Create sell bitcoin function that take amount of bitcoin to sell.
 	function sellBitcoin(uint256 _amount) external {
-        int256 price = getLatestPrice();
-        uint256 decimals = priceFeed.decimals();
-
-        uint256 usdcAmount = uint256(price) * _amount / (10 ** decimals);
-
-        wbtc.transferFrom(msg.sender, address(this), _amount);
-
-        usdc.transfer(msg.sender, usdcAmount);
+        /// code here
 	}
 
     /**
